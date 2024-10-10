@@ -1,0 +1,43 @@
+<app-header/>
+
+<div class="container"><br>
+
+      <button (click)="functionAdd()" class="btn btn-add">
+<i class="fa fa-plus" aria-hidden="true"></i>      </button>
+
+
+
+<table *ngIf="(products$|async) as products">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Title</th>
+      <th>Price</th>
+      <!-- <th>Images</th> -->
+      <th>Description</th>
+      <th>Actions</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let product  of products">
+      <td>{{product.id}}</td>
+      <td>{{product.title}}</td>
+      <td>{{product.price}}</td>
+      <!-- <td><img style="width: 100px;" [src]="product.category.image" alt=""></td> -->
+      <td>{{product.description}}</td>
+      <td>
+   <div style="display: flex;">
+            <button class="btn btn-add" (click)="functionEdit(product.id)"><i class="fas fa-edit"></i></button>
+        <button class="btn btn-delete" (click)="functionDelete(product.id)"><i class="fa fa-trash" aria-hidden="true"></i>
+</button>
+   </div>
+ 
+      </td>
+
+    </tr>
+  </tbody>
+</table>
+
+</div>
+
